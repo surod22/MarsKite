@@ -10,8 +10,8 @@ Servo myservo;  // create servo object to control a servo
                 // a maximum of eight servo objects can be created 
  
 int pos = 0;    // variable to store the servo position 
-const int servo_max = 180; // Don't let the servo turn to angles larger than this.
-const int servo_min = 0; // Don't let the servo turn to angles smaller than this.
+const int servo_max = 180; // The servo can't turn to angles larger than this.
+const int servo_min = 0; // The servo won't respond to angles lower than this.
 const int switch_a_in = 6;
 const int switch_b_in = 7;
 const int servo_pin = 9;
@@ -42,16 +42,16 @@ void loop()
    //Serial.println("Switch a high."); 
     myservo.write(++pos);
     delay(5);
-    if (pos > 180) {
-      pos = 180;
+    if (pos > servo_max) {
+      pos = servo_max;
     }
   }
   else if (switch_state_b==HIGH) {
    //Serial.println("Switch b high."); 
    myservo.write(--pos); 
    delay(5);
-   if (pos < 0) {
-    pos = 0; 
+   if (pos < servo_min) {
+    pos = servo_min; 
    }
   }
   else {
