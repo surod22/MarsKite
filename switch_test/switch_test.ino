@@ -32,6 +32,7 @@ void setup()
  
 void loop() 
 { 
+  
   // Check the state of each input pin.
   // Assume that only one of them will be high at a time.
   switch_state_a = digitalRead(switch_a_in);
@@ -40,7 +41,7 @@ void loop()
   if (switch_state_a==HIGH) {
    //Serial.println("Switch a high."); 
     myservo.write(++pos);
-    delay(1);
+    delay(5);
     if (pos > 180) {
       pos = 180;
     }
@@ -48,7 +49,7 @@ void loop()
   else if (switch_state_b==HIGH) {
    //Serial.println("Switch b high."); 
    myservo.write(--pos); 
-   delay(1);
+   delay(5);
    if (pos < 0) {
     pos = 0; 
    }
