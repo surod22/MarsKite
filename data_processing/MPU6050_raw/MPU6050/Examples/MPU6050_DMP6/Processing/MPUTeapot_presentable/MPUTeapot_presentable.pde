@@ -55,7 +55,8 @@ float[] gravity = new float[3];
 float[] euler = new float[3];
 float[] ypr = new float[3];
 
-int BAUD = 38400;
+int BAUD = 1200;
+//int BAUD = 38400;
 
 void setup() {
     // 300px square viewport using OpenGL rendering
@@ -147,22 +148,21 @@ void serialEvent(Serial port) {
     interval = millis();
     while (port.available() > 0) {
       
-        String inBuffer = port.readString();   
-        if (inBuffer != null) {
-          print(inBuffer);
-          println("********* ", inBuffer.length() );
-          
-//          q = splitTokens( inBuffer );
-//          println(q[0]);  // Prints "a"
-//          println(q[1]);  // Prints "b"
-//          println(q[2]);
-
-        }
+//        String inBuffer = port.readString();   
+//        if (inBuffer != null) {
+//          print(inBuffer);
+////          print("********* ", inBuffer.length() );
+//          
+////          q = splitTokens( inBuffer );
+////          println(q[0]);  // Prints "a"
+////          println(q[1]);  // Prints "b"
+////          println(q[2]);
+//        }
       
       
       
         int ch = port.read();
-//        print((char)ch);
+        print((char)ch);
         if (ch == '$') {serialCount = 0;} // this will help with alignment
         if (aligned < 4) {
             // make sure we are properly aligned on a 14-byte packet
